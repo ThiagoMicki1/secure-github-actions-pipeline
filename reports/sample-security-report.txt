@@ -1,0 +1,27 @@
+Secure GitHub Actions Pipeline - Sanitized Sample Report
+Generated for portfolio demonstration only.
+
+[PASS] Build and Test
+- Python dependencies installed successfully.
+- Unit tests passed.
+- Docker image built successfully.
+
+[PASS] Secrets Scan - Gitleaks
+- Result: no real secrets detected.
+- Note: sanitized examples are allowlisted only in documentation/report files.
+
+[PASS] SAST - Semgrep
+- Result: no blocking findings.
+- Rulesets: p/python, p/flask, p/secrets.
+
+[PASS] Dependency Review
+- Result: pull request dependency changes reviewed.
+- Policy: fail on high severity vulnerabilities.
+- Policy: deny GPL-3.0 and AGPL-3.0 licenses for this demo.
+
+[PASS] Container Scan - Trivy
+- Result: no unfixed HIGH or CRITICAL vulnerabilities blocking this sample run.
+- Policy: fail on HIGH or CRITICAL findings where a fix is available.
+
+Security takeaway:
+This pipeline uses layered controls. Tests catch functionality issues, Gitleaks catches accidental secret exposure, Semgrep catches risky code patterns, dependency review checks supply-chain changes, Dependabot keeps dependencies moving, and Trivy checks the final container image.

@@ -1,0 +1,30 @@
+Secure GitHub Actions Pipeline - Sample Local Validation
+Generated for portfolio demonstration on 2026-08-19.
+
+[PASS] Unit Tests
+Command: python -m pytest -q
+Result: 3 passed
+
+[PASS] Python Compile Check
+Command: python -m py_compile app/app.py scripts/validate_app.py
+Result: no syntax errors
+
+[PASS] Semgrep SAST
+Command: semgrep scan --config p/python --config p/flask --config p/secrets --error
+Result: 0 findings
+
+[PASS] Gitleaks Working Tree Scan
+Command: gitleaks dir . --config .gitleaks.toml --redact
+Result: no leaks found
+
+[PASS] Docker Build
+Command: docker build -t secure-actions-demo:local .
+Result: image built successfully
+
+[PASS] Trivy OS Vulnerability Gate
+Command: trivy image --scanners vuln --pkg-types os --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 secure-actions-demo:local
+Result: exit code 0
+
+[PASS] Trivy Dockerfile Config Scan
+Command: trivy config --severity HIGH,CRITICAL .
+Result: 0 Dockerfile misconfigurations
