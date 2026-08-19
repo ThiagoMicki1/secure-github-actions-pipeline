@@ -14,7 +14,7 @@ Command: semgrep scan --config p/python --config p/flask --config p/secrets --er
 Result: 0 findings
 
 [PASS] Gitleaks Working Tree Scan
-Command: gitleaks dir . --config .gitleaks.toml --redact
+Command: gitleaks detect --no-git --source . --config .gitleaks.toml --redact
 Result: no leaks found
 
 [PASS] Docker Build

@@ -167,13 +167,13 @@ semgrep scan --config p/python --config p/flask --config p/secrets --error
 Run Gitleaks if installed:
 
 ```bash
-gitleaks dir . --config .gitleaks.toml --redact
+gitleaks detect --no-git --source . --config .gitleaks.toml --redact
 ```
 
 Docker alternative:
 
 ```bash
-docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest dir /repo --config /repo/.gitleaks.toml --redact --no-banner
+docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest detect --no-git --source /repo --config /repo/.gitleaks.toml --redact --no-banner
 ```
 
 Run Trivy if installed:

@@ -12,7 +12,9 @@ done
 mkdir -p reports/local
 
 echo "Running Gitleaks..."
-gitleaks dir . \
+gitleaks detect \
+  --no-git \
+  --source . \
   --config .gitleaks.toml \
   --redact \
   --report-format json \
