@@ -265,24 +265,6 @@ More detail:
 - Add OIDC examples for cloud deployments without long-lived credentials
 - Add GitHub environments with required reviewers
 
-## Commands To Publish To GitHub
-
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "Initial Secure GitHub Actions Pipeline"
-gh repo create ThiagoMicki1/secure-github-actions-pipeline --public --source . --remote origin --push
-gh repo edit ThiagoMicki1/secure-github-actions-pipeline --description "Beginner DevSecOps lab for secure GitHub Actions CI/CD with Gitleaks, Semgrep, Dependabot, and Trivy." --add-topic github-actions --add-topic devsecops --add-topic ci-cd --add-topic cybersecurity --add-topic gitleaks --add-topic semgrep --add-topic trivy --add-topic dependabot --add-topic portfolio-project
-```
-
-Verify workflows after pushing:
-
-```bash
-gh workflow list
-gh run list --limit 5
-```
-
 ## Disclaimer
 
 This project is for educational and portfolio use. It is a safe learning lab and does not include real secrets or production credentials.
