@@ -26,5 +26,7 @@ def test_security_controls_endpoint_lists_pipeline_controls():
     controls = response.get_json()["controls"]
 
     assert response.status_code == 200
+    assert len(controls) == len(set(controls))
     assert "secrets-scanning" in controls
     assert "container-scanning" in controls
+    assert "least-privilege-actions" in controls

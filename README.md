@@ -109,7 +109,7 @@ Windows PowerShell:
 Install dependencies:
 
 ```bash
-pip install -r requirements-dev.txt
+python -m pip install -r requirements-dev.txt
 ```
 
 ## Run The App Locally
@@ -155,7 +155,7 @@ docker run --rm --name secure-actions-demo -p 8000:8000 secure-actions-demo:loca
 Install optional security tools locally:
 
 ```bash
-pip install -r requirements-security.txt
+python -m pip install -r requirements-security.txt
 ```
 
 Run Semgrep:
@@ -252,6 +252,10 @@ More detail:
 
 - [`docs/devsecops-controls.md`](docs/devsecops-controls.md)
 - [`docs/sanitized-insecure-example.md`](docs/sanitized-insecure-example.md)
+
+## What I Struggled With
+
+The main tradeoff was deciding how many security tools to include without making the pipeline feel inflated. I kept the app small and focused on controls I can explain: tests, secrets scanning, SAST, dependency review, Dependabot, Trivy, and least-privilege workflow permissions.
 
 ## Future Improvements
 
