@@ -18,6 +18,7 @@ The lab includes:
 - Dependency review for pull requests
 - Dependabot configuration
 - Container vulnerability scanning with Trivy
+- SBOM generation with Trivy
 - Least-privilege workflow permissions
 - Sanitized sample security report
 - Documentation explaining each DevSecOps control
@@ -45,6 +46,7 @@ secure-github-actions-pipeline/
 │   └── sample-security-report.txt
 ├── scripts/
 │   ├── run-local-security.sh
+│   ├── generate-sbom.sh
 │   └── validate_app.py
 ├── tests/
 │   └── test_app.py
@@ -188,6 +190,12 @@ Or run the helper script:
 bash scripts/run-local-security.sh
 ```
 
+Generate a local CycloneDX SBOM after building the Docker image:
+
+```bash
+bash scripts/generate-sbom.sh secure-actions-demo:local
+```
+
 ## GitHub Actions Workflows
 
 ### Build And Test
@@ -214,6 +222,7 @@ Jobs:
 - Semgrep SAST scan
 - Dependency review on pull requests
 - Trivy container image scan for OS package vulnerabilities
+- Trivy CycloneDX SBOM generation uploaded as a short-retention workflow artifact
 
 The workflow uses read-only permissions by default and only grants job-level permissions where needed.
 
@@ -263,7 +272,6 @@ The main tradeoff was deciding how many security tools to include without making
 - Upload SARIF results to GitHub code scanning
 - Add branch protection rules requiring CI checks
 - Add OpenSSF Scorecard
-- Add SBOM generation with Trivy
 - Add Docker Scout or Grype as a second container scanner
 - Add pre-commit hooks for local security checks
 - Add OIDC examples for cloud deployments without long-lived credentials

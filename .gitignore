@@ -22,6 +22,7 @@ reports/local/
 gitleaks-report.json
 semgrep-report.json
 trivy-report.json
+reports/*-sbom.cdx.json
 
 # OS/editor noise
 .DS_Store

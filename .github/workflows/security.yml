@@ -89,6 +89,20 @@ jobs:
       - name: Build Docker image
         run: docker build -t secure-actions-demo:${{ github.sha }} .
 
+      - name: Generate Trivy SBOM
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: secure-actions-demo:${{ github.sha }}
+          format: cyclonedx
+          output: trivy-sbom.cdx.json
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: trivy-sbom
+          path: trivy-sbom.cdx.json
+          retention-days: 7
+
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@v0.36.0
         with:
